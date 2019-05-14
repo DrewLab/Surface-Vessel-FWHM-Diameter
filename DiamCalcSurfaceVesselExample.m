@@ -31,6 +31,7 @@ clc
 
 disp('Select a single .tif stack from the current directory'); disp(' ')
 tifStack = uigetfile('*.tif', 'Multiselect', 'off');
+disp(['Loading: ' tifStack '...']); disp(' ')
 movieInfo = imfinfo(tifStack);   % Pull information from graphics file
 
 %take file info and extrac magnification and frame rate
@@ -56,31 +57,36 @@ MScanData.notes.endframe = MScanData.notes.header.numberOfFrames;
 % Select objective size
 flag = false;
 while ~flag
-    answer = input('Which objective was used during this stack? Objective IDs: 10X, 16X, small 20X, big 20X, 40X: ', 's'); disp(' ')
-    if strcmp(answer, '10X') || strcmp(answer, '16X') || strcmp(answer, 'small 20X') || strcmp(answer, 'big 20X') || strcmp(answer, '40X')
+    disp('Which objective was used during this stack? Objective IDs:')
+    disp('      [1] Olympus UMPlanFL N 10X')
+    disp('      [2] Nikon CFI75 LWD 16X')
+    disp('      [3] Olympus UMPlanFL N 20X (0.50 NA)')
+    disp('      [4] Olympus UMPlanFL N 20X (1.00 NA)')
+    disp('      [5] Olympus UMPlanFL N 40X')
+    answer = input('Enter objective ID number [1 2 3 4 5]: ', 's'); disp(' ')
+    if strcmp(answer, '1') || strcmp(answer, '2') || strcmp(answer, '3') || strcmp(answer, '4') || strcmp(answer, '40X')
         flag = true;
     end
 end
 
 % Handle response
 switch answer
-    case '10X'
+    case '1'
         micronsPerPixel = 1.2953;
-    case '16X'
+    case '2'
         micronsPerPixel = 0.825;
-    case 'small 20X'
-        micronsPerPixel = 0.5595;
-        
-    case 'big 20X'
-        micronsPerPixel = 0.64;
-        
-    case '40X'
+    case '3'
+        micronsPerPixel = 0.5595;       
+    case '4'
+        micronsPerPixel = 0.64;    
+    case '5'
+        micronsPerPixel = 0.3619; 
 end
 
 % Select vessel type
 flag = false;
 while ~flag
-    MScanData.notes.vesselType = input('Is the vessel an artery (A), vein (V), or dural (D) vessel?: ', 's');
+    MScanData.notes.vesselType = input('Is the vessel an artery (A), vein (V), or dural (D) vessel?: ', 's'); disp(' ')
     answer = MScanData.notes.vesselType;
     if strcmp(answer, 'A') || strcmp(answer, 'D') || strcmp(answer, 'V')
         flag = true;
@@ -108,9 +114,8 @@ ySize = size(image, 1);
 area = impoly(gca, [1 1; 1 20; 20 20; 20 1]); %#ok<*IMPOLY>
 
 while strcmp(yString, theInput) ~= 1
-    theInput = input('Is the diameter of the box ok? (y/n): ', 's');
+    theInput = input('Is the diameter of the box ok? (y/n): ', 's'); disp(' ')
 end
-disp(' ')
 
 if strcmp(yString, theInput)
     get_API = iptgetapi(area);
@@ -124,7 +129,6 @@ diamAxis = imline(gca, round(xSize*[.25 .75]), round(ySize*[.25 .75])); %#ok<*IM
 while strcmp(yString, theInput) ~= 1
     theInput = input('Is the line along the diameter axis ok? (y/n): ', 's'); disp(' ')
 end
-disp(' ')
 
 if strcmp(yString, theInput)
     get_API = iptgetapi(diamAxis);
