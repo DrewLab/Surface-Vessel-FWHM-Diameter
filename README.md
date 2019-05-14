@@ -50,7 +50,7 @@ When the script completes, it will output a movie of the .TIF stack (sped up 5X)
  
 *Generating movie (sped-up 5X)...*
  
-Diameter calculation for surface vessel example  - complete.*
+*Diameter calculation for surface vessel example  - complete.*
 
 # Acknowledgements
 - Written by Kevin L. Turner and Patrick J. Drew
