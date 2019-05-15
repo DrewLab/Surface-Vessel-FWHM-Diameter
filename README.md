@@ -52,8 +52,10 @@ When the script completes, it will output a movie of the .TIF stack (sped up 5X)
  
 *Diameter calculation for surface vessel example  - complete.*
 
+If you utilize aspects of this quote, please cite: **Huo BX, Gao YR, Drew PJ, (2015) Quantitative separation of arterial and venous cerebral blood volume increases during voluntary locomotion, NeuroImage, 105:369–379, doi: 10.1016/j.neuroimage.2014.10.030**
+
 # Acknowledgements
 - Written by Kevin L. Turner and Patrick J. Drew
-- Previous code contributions by Yurong Gao, Bingxing Huo, and Christina Echagarruga
+- Previous code contributions by Yurong Gao and Christina Echagarruga
 
 https://sites.esm.psu.edu/~pjd17/Drew_Lab/Drew_Lab.html
