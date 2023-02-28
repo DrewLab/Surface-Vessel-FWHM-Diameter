@@ -3,7 +3,7 @@ This repository provides sample data and code that demonstrates how to calculate
 
 # Instructions
 - Analysis code (*DiamCalcSurfaceVesselExample.m*) is available for download at https://github.com/KL-Turner/Surface-Vessel-FWHM-Diameter/blob/master/DiamCalcSurfaceVesselExample.m
-- Sample data (*190426_008.TIF*) is available for download at https://drive.google.com/drive/folders/1YKzuRAuJtlcBx3zLxZods0PeUsiUrTlm?usp=sharing
+- Sample data (*190426_008.TIF*) is available for download at https://figshare.com/articles/dataset/190426_008_TIF/22189825
 
 Analysis code is self-contained, with all necessary functions nested in the script. The user places an ROI along a short segment of the vessel along which the diameter is measured. The edges of the ROI parallel to the midline of the vessel need to be far enough away from the vessel such that when the vessel dilates, the vessel does not completely fill the ROI. No other fluorescent objects other than the vessel segment to be measured should be in this ROI.
 
