@@ -114,6 +114,7 @@ ySize = size(image, 1);
 area = impoly(gca, [1 1; 1 20; 20 20; 20 1]); %#ok<*IMPOLY>
 
 while strcmp(yString, theInput) ~= 1
+    drawnow()
     theInput = input('Is the diameter of the box ok? (y/n): ', 's'); disp(' ')
 end
 
@@ -127,6 +128,7 @@ end
 
 diamAxis = imline(gca, round(xSize*[.25 .75]), round(ySize*[.25 .75])); %#ok<*IMLINE>
 while strcmp(yString, theInput) ~= 1
+    drawnow()
     theInput = input('Is the line along the diameter axis ok? (y/n): ', 's'); disp(' ')
 end
 
